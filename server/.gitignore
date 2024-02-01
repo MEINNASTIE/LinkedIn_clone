@@ -1,0 +1,11 @@
+
+.env
+
+# .gitignore
+
+# Dependencies
+node_modules/
+
+# Build files
+build/
+dist/
