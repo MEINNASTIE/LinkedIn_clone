@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { baseUrl } from '../../utils/api'; 
 
 export default function UserListComponent() {
   const [users, setUsers] = useState([]);
@@ -8,7 +9,9 @@ export default function UserListComponent() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/user/getallusers'); // change PORT accordingly when needed :)
+        // const response = await axios.get('http://localhost:4500/user/getallusers'); // change PORT accordingly when needed :)
+        const response = await axios.get(`${baseUrl}/user/getallusers`)
+
         console.log('Users received from the backend:', response.data);
         setUsers(response.data.users);
         setLoading(false);

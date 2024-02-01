@@ -21,6 +21,7 @@ export default function UserCard({user}) {
         </div>
         <div className="ml-3">
           <p className="text-sm font-medium text-gray-900">{user.username || 'Unknown user'}</p>
+
         </div>
       </div>
     </div>

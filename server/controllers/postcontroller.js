@@ -5,7 +5,7 @@ import Post from "../models/PostModel.js"
 // GET ALL POSTS ****************
 export const handlegetposts = async (req, res) => {
     try{
-        const posts = await Post.find()
+        const posts = await Post.find().populate("author")
         res.json({success: true, posts})
     } catch (error) {
         console.error("Error getting all posts:", error.message);

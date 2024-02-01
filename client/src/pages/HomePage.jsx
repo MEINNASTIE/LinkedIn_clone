@@ -28,6 +28,8 @@ export default function Homepage() {
             <div key={post._id} className="w-1/3 flex flex-col bg-white shadow-md rounded-md relative">
               <div className="pl-6 pt-2 mt-1">
                 <h2>{post.title}</h2>
+                <p className="text-sm font-medium text-gray-900">{post.author.username || 'Unknown user'}</p> 
+
                 <p className="text-gray-700 mb-4">{post.content}</p>
               </div>
               {post.image && (
@@ -36,9 +38,13 @@ export default function Homepage() {
                 src={post.image}
                 alt="Post"
               />
+              
+              
             )}
+
             <div className="pl-4">
-            <UserCard user={user} />
+            {/* <UserCard user={user} /> */}
+
             <hr className="mt-3"></hr>
             </div>
             <div className="flex justify-between mt-4 pr-5 pl-5 pb-4">
