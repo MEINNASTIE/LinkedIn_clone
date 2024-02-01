@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { baseUrl } from '../../utils/api'; 
+import { useUserContext } from '../../context/user-context'; 
 
 export default function UserListComponent() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const { user } = useUserContext();
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -38,7 +39,10 @@ export default function UserListComponent() {
             />
             <h3 className="text-lg font-bold mb-2">{user.username}</h3>
             <p className="text-gray-600">Email: {user.email}</p>
-            <p className="text-gray-600">Job Title: {user.jobTitle}</p>
+            <input type="text" name="jobtitle" placeholder="Job Title" value={user.jobtitle}  />
+                <input type="text" name="company" placeholder="Company" value={user.company}  />
+                <input type="text" name="skills" placeholder="Skills" value={user.skills}  />
+                <textarea name="bio" placeholder="Bio" value={user.bio}  />
           </div>
         ))
       )}

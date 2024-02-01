@@ -53,9 +53,24 @@ const UserProvider = ({ children }) => {
     }
   };
 
+  const updateUserProfile = async (profileData) => {
+    try {
+      const userId = user._id; 
+      const response = await axios.put(`${baseUrl}/user/updateProfile/${userId}`, profileData);
+
+      const updatedUser = {...user, ...response.data.user}; 
+      setUser(updatedUser);
+      localStorage.setItem('user', JSON.stringify(updatedUser));
+      alert('Profile updated successfully');
+      navigate('/profilePage'); 
+    } catch (error) {
+      console.error('Error updating profile:', error);
+      alert('Failed to update profile');
+    }
+  };
   return (
     <UserContext.Provider
-      value={{ user, logoutHandler, registerHandler, loginHandler }}
+      value={{ user, logoutHandler, registerHandler, loginHandler,updateUserProfile }}
     >
       {children}
     </UserContext.Provider>

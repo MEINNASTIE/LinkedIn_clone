@@ -46,3 +46,16 @@ export const handlegetusers = async (req, res) =>{
             res.status(500).json({ success: false, error: error.message });
         }
 }
+//UPDATE PROFILE*****************
+
+export const handleUpdateProfile = async (req, res) => {
+    try {
+      const { userId } = req.params;
+      const updateData = req.body;
+      const updatedUser = await User.findByIdAndUpdate(userId, updateData, { new: true }).select("-password");
+      res.json({ success: true, user: updatedUser });
+    } catch (error) {
+      console.error("Error updating user profile:", error.message);
+      res.status(500).json({ success: false, error: error.message });
+    }
+  };
